@@ -276,6 +276,38 @@ print(<span style="color:#00ffea;">combine_names(</span><span style="color:#ff00
 										</li>
 									</ul>
 
+									<h5>Returning a function by anoter function:</h5>
+									<ul>
+										<li>Every function can return another function:
+<!-- start -->
+<pre>
+def <span style="color:#00ffea;">create_multiplication(</span>multiplier<span style="color:#00ffea;">)</span>:
+
+  def multiplication(number):
+    return multiplier*number
+
+  return multiplication
+
+
+double = <span style="color:#00ffea;">create_multiplication(</span>2<span style="color:#00ffea;">)</span>
+triple = <span style="color:#00ffea;">create_multiplication(</span>3<span style="color:#00ffea;">)</span>
+quadruple = <span style="color:#00ffea;">create_multiplication(</span>4<span style="color:#00ffea;">)</span>
+
+print(double(5))
+print(triple(5))
+print(quadruple(5))
+-------------
+# output
+# 10
+# 15
+# 20
+</pre>
+<!-- end -->
+											- Function <code>multiplication</code> is a type of closure, which is the inner function that remebera outer variable passed to outer function - in this case <code>create_multiplication</code>.<br>
+											- Function <code>create_multiplication</code> returns unexecuted function <code>multiplication</code> that is being executed further in the code passig <code>number</code> parameter tha is being multiplied by memorized <code>multiplier</code> parameter.
+										</li>
+									</ul>
+
 								</div>
 
 						<!-- Four -->
