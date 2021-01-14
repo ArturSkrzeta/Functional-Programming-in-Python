@@ -220,6 +220,35 @@ updated_person = <span style="color:#00ffea;">create_person(</span>'Adam'. perso
 										</li>
 									</ul>
 
+									<h5>List of functions:</h5>
+									<ul>
+										<li>Wec can store functions in the list keeping their name without executing them:
+<!-- start -->
+<pre>
+def double(x):
+  return x*2
+
+def minus_one(x):
+  return x-1
+
+def squared(x):
+  return x*2
+
+my_number = 3
+function_list = [double, minus_one, squared]
+
+for func in function_list:
+  print(func(my_number))
+
+---------------
+# output
+# 6
+# 2
+# 9
+</pre>
+<!-- end -->
+										</li>
+									</ul>
 								</div>
 							</section>
 
