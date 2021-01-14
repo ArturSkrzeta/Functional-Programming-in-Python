@@ -91,6 +91,10 @@
 													<td>Program decomposes a problem into a set of functions.</td>
 												</tr>
 												<tr>
+													<td>Data and functions are groupped together in an object of a specific type. Function can change data of member variables.</td>
+													<td>Data separated from functions. Functions don't modify any data.</td>
+												</tr>
+												<tr>
 													<td>Objects have internal state (attributes fed with data) that can be modified by object's methods.</td>
 													<td>Functions accept inputs and produce outputs without any state that may affect a returned object.</td>
 												</tr>
@@ -140,6 +144,12 @@
 
 										<h5>Functional Programming constraints:</h5>
 										<ul>
+											<li>Functions are separated form data they operate on.
+													Data must be passed into functions as arguments.
+											</li>
+											<li>Functions should never make changes to data they touch.
+													They should only return a modified copy.
+											</li>
 											<li>In the functional programming we don't assign values in the way of naming the bucket in the memory that holds different values at different time.
 													What we do instead, is we simply define a value. Here is what I mean:
 													<br>
@@ -147,8 +157,10 @@
 													- <code>x</code> is literally <code>3</code> like <code>x</code> is another name for <code>3</code>,<br>
 													- analogously like <b>pi</b> means <b>3.14</b> by itself.
 											</li>
-											<li>Conceptually, each value should be treated as a constant. However, Python doesn't have a dedicated constant key-word for preventing variables from being changed.
-													Functional programming treats values as if they were concrete and unchangeable.</li>
+											<li>Conceptually, each value should be treated as a constant.
+												 	However, Python doesn't have a dedicated constant key-word for preventing variables from being changed.
+													Functional programming treats values as if they were concrete and unchangeable.
+											</li>
 										</ul>
 
 									</header>
