@@ -89,8 +89,12 @@
 													<td>Program decomposes a problem into a set of functions.</td>
 												</tr>
 												<tr>
-													<td>Objects have internal state that can be modified by object's methods.</td>
+													<td>Objects have internal state (attributes fed with data) that can be modified by object's methods.</td>
 													<td>Functions accept inputs and produce outputs without any state that may affect a returned object.</td>
+												</tr>
+												<tr>
+													<td>Programs consist of making the right set of state changes.</td>
+													<td>Programs avoid state changes as much as possible and works with data flowing between functions.</td>
 												</tr>
 												<tr>
 													<td>Java is object-oriented lanugage. C++ and Python support object-oriented programming, but don’t force the use it.</td>
@@ -107,15 +111,20 @@
 													We can either apply functional pragramming to put data intake throigh set of functions.
 											</li>
 											<li>In large programs, different parts can be defined using different approaches like UI can be object-oriented while the whole logic is procedural or functinal way.</li>
-											<li>Functional style supports functions with no side effects that could modify internal state or make other changes that aren’t visible in the function’s return value.
+											<li>Functional style supports functions with no side effects that could modify internal state or make other changes (like print(), time.sleep()) that aren’t visible in the function’s return value.
 													We define such functions as <b>purely functional</b> so they don't use any data structures that get updated as a program runs and the final returned output depens on an input solely.
 											</li>
-											<li></li>
 											<li>Python provides a functional-appearing interface but will use non-functional features under the hood.
 													For example, the implementation of a function will still use assignments to local variables, however it won't affect any global variables.
+													Another example is every functions that take and return instances representing objects.
 											</li>
 										</ul>
 
+										<h5>Why to use Functional Programming:</h5>
+										<ul>
+											<li>Easiness of mathematical proof that a functional program is correct as functional prgramming is the closest to math possible style.</li>
+											<li></li>
+										</ul>
 
 
 									</header>
