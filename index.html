@@ -248,6 +248,33 @@ for func in function_list:
 </pre>
 <!-- end -->
 										</li>
+
+										<h5>Passing function as the argument:</h5>
+										<ul>
+											<li>
+<!-- star -->
+<pre>
+def <span style="color:#00ffea;">combine_names(</span>func<span style="color:#00ffea;">)</span>:
+  return func('Artur', 'Skrzeta')
+
+def append_wtih_space(str1, str2):
+  return f'{str1} {str2}'
+
+def get_upper(first, last):
+  return f'{first.upper()} {last.upper()}'
+
+print(<span style="color:#00ffea;">combine_names(</span>append_wtih_space)</span>)
+print(<span style="color:#00ffea;">combine_names(</span>get_upper)</span>)
+
+-----------
+# output
+# Artur Skrzeta
+# ARTUR SKRZETA
+</pre>
+<!-- end -->
+											</li>
+
+										</ul>
 									</ul>
 								</div>
 							</section>
