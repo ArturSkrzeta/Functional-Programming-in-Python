@@ -46,430 +46,122 @@
 							<section id="one">
 								<div class="container">
 									<header class="major">
-										<h2>My In Depth Python Comprehension</h2>
+										<h2>Functional Programming in Python</h2>
+
 										<h3>Intro</h3>
-										<p style="text-align: justify;">In this section, I describe all my knowledge on Python I have managed to gather so far. It contains Python pure architecture, concepts and language-specific properties.</p>
 
-										<h5>Python:</h5>
+
+										<p style="text-align: justify;">In this, let's call it, post I put all my notes on functional programming in Python. However let's start with more general concepts in programming. Programming languages follow one of 2 paradigms:</p>
+
+										<table>
+											<thead>
+												<tr>
+													<th>Imperative</th>
+													<th>Declarative</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Supports procedural paradigm.</td>
+													<td>Supports functional paradigm.</td>
+												</tr>
+												<tr>
+													<td>We list all the step-by-step instructions that tell the computer what to do with the program’s input.</td>
+													<td>We write what we want and the implemented lanugage figures out how to perform the computation efficiently </td>
+												</tr>
+												<tr>
+													<td>C, PHP, all major languages.</td>
+													<td>SQL, markup languages, CSS.</td>
+												</tr>
+											</tbody>
+										</table>
+
+										<p>There are also two different ways of approaching problems in programming:</p>
+
+										<table>
+											<thead>
+												<tr>
+													<th>Object-oriented Programming</th>
+													<th>Functional Programming</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Program manipulates collections of objects.</td>
+													<td>Program decomposes a problem into a set of functions.</td>
+												</tr>
+												<tr>
+													<td>Data and functions are groupped together in an object of a specific type. Function can change data of member variables.</td>
+													<td>Data separated from functions. Functions don't modify any data.</td>
+												</tr>
+												<tr>
+													<td>Objects have internal state (attributes fed with data) that can be modified by object's methods.</td>
+													<td>Functions accept inputs and produce outputs without any state that may affect a returned object.</td>
+												</tr>
+												<tr>
+													<td>Programs consist of making the right set of state changes.</td>
+													<td>Programs avoid state changes as much as possible and works with data flowing between functions.</td>
+												</tr>
+												<tr>
+													<td>Java is object-oriented lanugage. C++ and Python support object-oriented programming, but don’t force the use it.</td>
+													<td>Haksell, Scala.</td>
+												</tr>
+											</tbody>
+										</table>
+
+										<h5>How it goes in Python:</h5>
 										<ul>
-											<li>Pyhon is the interpreted programming language and its interpreter runs code from top to bottom, from right to left linearly.
-												Almost everything is executable during run-time of code.
-												This is in opostion to Java or C where entire code is complied by the compiler to the machine's bucekt of bits.
+											<li>Python is multi-paradigm based.</li>
+											<li>We can write large procedural prgrams that executes code line by line from top to bottom.
+													We can rely on object-oriented approach defining our own types or importing types from external libraries.
+													We can either apply functional pragramming to put data intake throigh set of functions.
 											</li>
-											<li>For example Python's class in simply executable code during runtime:
-												<br>
-<!-- start -->
-<pre>
-for _ in range(10)
-  class Base:
-    pass
-</pre>
-<!-- end -->
-												- The code above defines <code>class Base</code> 10 times as the for loop goes.
+											<li>In large programs, different parts can be defined using different approaches like UI can be object-oriented while the whole logic is procedural or functinal way.</li>
+											<li>Functional style supports functions with no side effects that could modify internal state or make other changes (like print(), time.sleep()) that aren’t visible in the function’s return value.
+													We define such functions as <b>purely functional</b> so they don't use any data structures that get updated as a program runs and the final returned output depens on an input solely.
 											</li>
-											<li>Everything in Python is an object:
-												<br>
-<!-- start -->
-<pre>
-def add(x,y):
-  return x + y
+											<li>Python provides a functional-appearing interface but will use non-functional features under the hood.
+													For example, the implementation of a function will still use assignments to local variables, however it won't affect any global variables.
+													Interestingly, this is in oposizton to a strictly functional languages which don't even have any assignment statements such as <code>a = 3</code> or <code>c = a + b</code>.
+													Another example is every functions that take and return instances representing objects.
+											</li>
+										</ul>
 
-add
-
-----------
-# output
-# &ltfunction add at 0x002F6850&gt
-
-</pre>
-<!-- end -->
-												- Python interpreter can tell us where the functions as the object is located in the memeory (output above).
+										<h5>Why to use Functional Programming:</h5>
+										<ul>
+											<li>Easiness of mathematical proof that a functional program is correct as functional prgramming is the closest to math possible style.
+													However, mathematical proof doesn't mean unit testing where we give inputs and compare it with expected output.
+													Can be used therotically, however in case of Python's program it's usually not in usage.
 											</li>
-											<li>Python supports both Object-oriented Programming (OOP) and Functional Programming (FP):
-												<br><br>
-												<table>
-													<thead>
-														<tr>
-															<th>OOP</th>
-															<th>FP</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>Object creation and manipulation with specific methods.</td>
-															<td>Function can be used as <b>first class object</b>.</td>
-														</tr>
-														<tr>
-															<td>Object-oriented featured like inheritance, encapsultaion, polymorphism.</td>
-															<td>Supports lambda function characteristic for functional paradigm.</td>
-														</tr>
-													</tbody>
-												</table>
+											<li>Modularity - this is a very practical rule of keepeing your code and thus breaking the problem apart into small pieces.
+													Small functions with single responsibility is easier to read, debug, test and update.
+													Each function is a unit for a test.
 											</li>
-											<li>First class object:
+											<li>Reusability - all the small functions can act like sub-programs that can be used in different part of main program many times.
+												 	We are able then to literally assemble new programs by arranging existing functions in a new configuration and writing a few functions specialized for the current task as needed.
+											</li>
+										</ul>
+
+										<h5>Functional Programming constraints:</h5>
+										<ul>
+											<li>Functions are separated form data they operate on.
+													Data must be passed into functions as arguments.
+											</li>
+											<li>Functions should never make changes to data they touch.
+													They should only return a modified copy.
+											</li>
+											<li>In the functional programming we don't assign values in the way of naming the bucket in the memory that holds different values at different time.
+													What we do instead, is we simply define a value. Here is what I mean:
 													<br>
-													- function can be treated like an object,<br>
-													- function can be passed as an argument to another function.<br>
-<!-- start -->
-<pre>
-def square(x):
-  return x*x
-
-def my_map(func, lst):
-  result = []
-	for i in lst:
-    result.append(func(i))
-	return result
-
-squares = my_map(square, [1,2,3,4,5])
-print(squares)
-
----------------
-# output
-# [1,4,9,16,25]
-</pre>
-<!-- end -->
-													1. <code>square</code> function has been passed to the <code>my_map</code> unexecuted (without brackets).<br>
-													2. It's being executed later in <code>my_map</code>'s body for every item in the passed list.<br>
-													- function can be assigned to a variable,<br>
-<!-- start -->
-<pre>
-sream = print
-scream("Hello!")
-
------------------
-# output
-# Hello!
-</pre>
-<!-- end -->
-													- function can be returned by another function,<br>
-<!-- start -->
-<pre>
-def outer_func()
-  message = "Hello!"
-
-  def inner_func():
-    print(message)
-
-  return inner_func
-
-welcome_func = outer_func()
-welcome_func()
-
--------------
-# output
-# Hello!
-</pre>
-<!-- end -->
-												1. <code>outer_func</code> being executed returns <code>inner_func</code> that waits for its execution.<br>
-												2. <code>inner_func</code> is assigned to variable <code>welcome_func</code> which can be executed as the same as every function.<br>
-												3. <code>inner_func</code> is also so-called <b><u>closure</u></b> which is every inner function in the body of outer function.
-														Closure remembers and has access to variables in the local scope it was created.
-														Closure has an access to that variable even after the outer function has finished executing.
-														In this case, <code>inner_func</code> can access <code>member</code> variable in the local scope of <code>outer_fun</code>.
+													- when <code>x = 3</code> then <b>x</b> is not a bucket or memory's container,<br>
+													- <code>x</code> is literally <code>3</code> like <code>x</code> is another name for <code>3</code>,<br>
+													- analogously like <b>pi</b> means <b>3.14</b> by itself.
 											</li>
-											<li>Decorators:
-												<br>
-												- Decorator is a function that takes another functions as an argument, extends its functionality and returns another function without altering the original function's code that was passed in.<br>
-<!-- start -->
-<pre>
-def <span style="color:#00ffea;">decorator_fun(</span>original_fun<span style="color:#00ffea;">)</span>:
-    def <span style="color:#ff6fcb;">wrapper_fun(</span>*args,**kwargs<span style="color:#ff6fcb;">)</span>:
-        print(f'Wrapper executed this before {original_fun.__name__} runs.')
-        return original_fun(*args,**kwargs)
-    return <span style="color:#ff6fcb;">wrapper_fun</span>
-
-def display_info():
-    print('Displaying basic info')
-
-decorated_display_info = <span style="color:#00ffea;">decorator_fun(</span>display_info<span style="color:#00ffea;">)</span>
-decorated_display_info()
-
---------------
-# output
-# Wrapper executed this before display_info runs.
-# Displaying basic info
-</pre>
-<!-- end -->
-												1. <code>wrapper_fun</code> is a closure that remembers passed argument to <code>decorator_fun</code> even though <code>decorator_fun</code> finishes execution first.<br>
-												2. Inside the <code>wrapper_fun</code> we append additional functionality before running original function.<br>
-												3. <code>decorator_fun(display_info)</code> returns <code>wrapper_fun</code> that is waiting to be executed and remembers <code>display_info</code> function as a passed argument to the decorator.<br>
-												4. Executing <code>decorated_display_info()</code> executes <code>wrapper_fun</code> returining <code>original_fun</code> being executed as well.
-											</li>
-											<li>Pythonic way to use decorator:
-<!-- start -->
-<pre>
-@decorator_fun
-def display_info():
-    print('Displaying basic info')
-
-display_info()
-
--------------
-# output
-# Wrapper executed this before display_info runs.
-# Displaying basic info
-</pre>
-<!-- end -->
-												1. <code>@decorator_fun</code> means decorator applied that extend basic <code>display_info</code> function.
+											<li>Conceptually, each value should be treated as a constant.
+												 	However, Python doesn't have a dedicated constant key-word for preventing variables from being changed.
+													Functional programming treats values as if they were concrete and unchangeable.
 											</li>
 										</ul>
-
-										<h5>Variable scope:</h5>
-										<ul>
-											<li>There is a variable scope hierarchy:
-												<br>
-												1. Local scope (within a function).<br>
-												2. Enclosing scope (local scope of outer (enclosing) function).<br>
-												3. Global scope (top level of a module).<br>
-												4. Built-in.
-											</li>
-											<li>Local scope within a function saves us from using and, most important, from overwriting global variables.</li>
-										</ul>
-
-
-										<h5>Namespace:</h5>
-										<ul>
-											<li>Namespace:
-<!-- start -->
-<pre>
-sream = print
-scream("Hello!")
-</pre>
-<!-- end -->
-												- Above code defines <code>scream</code> as alias for the exisiting python's <code>print</code> function.<br>
-												- Assignment of <code>scream = print</code> introduces the identifier <code>scream</code> into the current namespace with the value being the object that represents built-in function.<br>
-												- When assignment of an identifier (variable) to a value (object) happens, the definition in being made in the current namespace.<br>
-												- Pytthon implements namespace with ist onw dictionary that maps each identifier to associated object.<br>
-												- When top-level assignment - we assign variable to an object in <b>the global scope</b>.<br>
-												- When assignment within a function  - we assign variable to an object in <b>the local scope</b>.<br>
-												- Example: assignment <code>x = 5</code> within a function has no effect on the identifier <code>x</code> outside.
-											</li>
-											<li>Namespace resolution:
-												<br>
-												- Python searches three scopes for a called name:<br>
-												1. the local (L),<br>
-												2. then the global (G),<br>
-												3. the built-in (B)<br>
-												and stops at the first place the name is found.<br>
-												- In practice, when we want to access atribute using dot operator syntax, the Python interpreter runs a name resolution process that looks up for a called name, checking:<br>
-												1. local instance scope,<br>
-												2. class scope,<br>
-												3. supercalss within inheritance hierarchy,<br>
-												4. it keeps seraching, otherwise it raises <b>AttributeError</b> when not found.
-											</li>
-										</ul>
-
-										<h5>OOP:</h5>
-										<ul>
-											<li>Object - an entity encapsulating data with methods for manipulating the data.</li>
-											<li>Object implementation goes with:
-												<br>
-												- <u>instance dictionary</u>: hold state (data) and points to its class,<br>
-												- <u>class dictionary</u>: hold functions (methods) to manipulating the data.<br>
-											</li>
-											<li>Special method <b>__init__</b>:
-												<br>
-												- Calling the class during instatiation creates instance that is being referred by the class with a key-word <b>self</b>.<br>
-												- In fact, <b>__init__</b> is not a constructor, it is initializer that takes an instance <b>self</b> and populates it with attributes that <b>__init__</b> receives.
-<!-- start -->
-<pre>
-class User:
-
-  def __init__(self, name, surname):
-    self.name = name
-    self.surname = surname
-    self.email = name + '.' + surname + '@myshop.com'
-
-</pre>
-<!-- stop	-->
-												- The goal of instance variable <b>self</b> is to take unique data for the specific instance.<br>
-												- The goal of <b>__init__</b> is to populate the instance with that data.
-											</li>
-											<li>Inheritance:
-												<br>
-												- ...
-											</li>
-											<li>Subclass:
-												<br>
-												- A class that delegates work to another class (parentclass).<br>
-												- A subclass and its parent-class are just two different dictionaries that contain functions to manipulate the data.<br>
-												- A sublcass points to ist parent due to flow: instance dictionary - > subclass dictionary -> parent-class dictionary.<br>
-												- Using subclasses can be used as a techique for code re-use.<br>
-												- In fact, a sublcass is in charge. It decides what work gets delegated.
-											</li>
-										</ul>
-
-										<h5>Getters and setters:</h5>
-										<ul>
-											<li><b>Getters ('accessors')</b> and <b>setters ('mutators')</b> are used in OOP for aplying the encapsulation principle.</li>
-											<li>Encapsulation means bundling attributes (data within a class) with the methods that operate on them.</li>
-											<li>According to encapsulation principle, the attributes of a class have to be set as private to hide and protect them from the other external codes.</li>
-											<li>Getters an setters simply dictate the way of accessing the class's private data.</li>
-											<li>In short, the getter is used for retrieving the data and the setter for changing the data within a class.</li>
-											<li>In Python the encapsulation matterw is solved as following:
-												<br>
-												- <u>getter</u>: the method which is used for getting a value is decorated with <u>"@property"</u>,<br>
-												- <u>setter</u>: the method which has to function as the setter is decorated with <u>"@x.setter"</u>.
-											</li>
-											<li>Code:
-
-<!-- start -->
-<pre>
-class <span style="color:#00ffea;">Circle()</span>:
-
-    version = '1.0.1'
-
-    def __init__(self, radius):
-        self.<span style="color:#f7e37e;">radius</span> = radius
-
-    <span style="color:#ff6fcb;">@property</span>
-    def radius(self):
-        return self.<span style="color:#f7e37e;">diameter</span> / 2
-
-    <span style="color:#ff6fcb;">@radius.setter</span>
-    def radius(self, radius):
-        self.<span style="color:#f7e37e;">diameter</span> = radius * 2
-
-
-def main():
-
-    c = <span style="color:#00ffea">Circle(</span>2<span style="color:#00ffea">)</span>
-    print(c.<span style="color:#f7e37e;">diameter</span>)
-    print(c.<span style="color:#f7e37e;">radius</span>)
-
-    c.diameter = 6
-    print(c.<span style="color:#f7e37e;">diameter</span>)
-    print(c.<span style="color:#f7e37e;">radius</span>)
-
-
-if __name__ == "__main__":
-    main()
-
----------------------
-# output
-# 4
-# 2
-# 6
-# 3
-
-</pre>
-<!-- stop	-->
-												- <code>@radius.setter</code> sets <code>self.diameter</code> with value <code>radius * 2</code> once object instatiated.<br>
-												- To prove setter's work, I can acccess <code>diameter</code> attribute right away.<br>
-												- With <code>@property</code> I can access <code>diameter</code> attribute.<br>
-												- However I don't have access to <code>self.radius</code> directly as it's taken over by <code>@property</code> getter. <code>self.radius</code> is accepted only during initialization but <code>diameter</code> is being stored within a class or instances.<br>
-												- <code>@property</code> and <code>@radius.setter</code> encapsulates <code>self.radius</code> and makes <code>diameter</code> attribute accessible be external code.
-											</li>
-											<li>Going with decorators and getting rid of getters and setters traditional methods makes a class shorter and running faster.</li>
-											<li>This is perfect solution for dynamic languages, however not allowed in a compiled language.</li>
-										</ul>
-
-										<h5>Easier to Ask Forgiveness than Permission (EAFP):</h5>
-										<ul>
-											<li>When you ask for a permission then you have to access object multiple tims as opposed to asking for forgiveness where you access object once.</li>
-											<li>Let's take two classes on which we will be asking first for permission and then for forgiveness:
-<!-- start -->
-<pre>
-class <span style="color:#ff6fcb;">Robot</span>:
-
-  def <span style="color:#f7e37e;">talks(</span>self<span style="color:#f7e37e;">)</span>:
-    print("I'm talking.")
-
-  def <span style="color:#f7e37e;">walk(</span>self<span style="color:#f7e37e;">)</span>:
-    print("I'm walking.")
-
-
-class <span style="color:#ff6fcb;">Duck</span>:
-
-  def <span style="color:#f7e37e;">quack(</span>self<span style="color:#f7e37e;">)</span>:
-    print("Quack, quack!")
-
-  def <span style="color:#f7e37e;">fly(</span>self<span style="color:#f7e37e;">)</span>:
-    print("Flap, flap!")
-
-</pre>
-<!-- stop -->
-											</li>
-											<li>At first we will be asking for permission with if statements. We call it <B>'Look Before You Leap (LBYL)'</b>:
-<!-- start -->
-<pre>
-def <span style="color:#00ffea">quack_and_fly(</span>thing<span style="color:#00ffea">)</span>:
-
-  if isinstance(thing,Duck):
-    thing.<span style="color:#f7e37e;">quack()</span>
-    thing.<span style="color:#f7e37e;">fly()</span>
-  else:
-    print("This has to be a duck.")
-
-d = <span style="color:#ff6fcb;">Duck()</span>
-<span style="color:#00ffea">quack_and_fly(</span>d<span style="color:#00ffea">)</span>
-
-r = <span style="color:#ff6fcb;">Robot()</span>
-<span style="color:#00ffea">quack_and_fly(</span>r<span style="color:#00ffea">)</span>
-
-----------
-# output
-# Quack, quack!
-# Flap, flap!
-# This has to be a duck.
-</pre>
-<!-- stop -->
-												1. We can see thath object <code>d</code> is an insatnce of <code>Duck</code> type so we get the permission to execute Duck's methods on the objet.<br>
-												2. We can see that object <code>r</code> is not an instance of <code>Duck</code> type so we don't get the permission to execute Duck's methods.<br>
-												3. Notice that we have to access an object each time to check its type, and once we get the permission then we access the same object one more time.
-											</li>
-											<li>Let's try to ask for forgiveness with <b>try except block</b>:
-<!-- start -->
-<pre>
-def <span style="color:#00ffea">quack_and_fly(</span>thing<span style="color:#00ffea">)</span>:
-  try:
-    thing.<span style="color:#f7e37e;">quack()</span>
-    thing.<span style="color:#f7e37e;">fly()</span>
-    thing.<span style="color:#f7e37e;">walk()</span>
-    thing.<span style="color:#f7e37e;">bark()</span>
-  except AttributeError as e:
-    print(e)
-
-d = <span style="color:#ff6fcb;">Duck()</span>
-<span style="color:#00ffea">quack_and_fly(</span>d<span style="color:#00ffea">)</span>
-
-r = <span style="color:#ff6fcb;">Robot()</span>
-<span style="color:#00ffea">quack_and_fly(</span>r<span style="color:#00ffea">)</span>
-
-------------
-# output
-# Quack, quack!
-# Flap, flap!
-#'Duck' object has no attribute 'walk'
-# 'Robot' object has no attribute 'quack'
-</pre>
-<!-- stop -->
-												1. Main assunption of EAFP is trying to execute the code to see what happens - if it work - grate, if not, then raise an error.<br>
-												2. This way we accessing object only once, when trying to retieve attribute on this.
-											</li>
-											<li>One more comparison EAFP vs LBYL:
-<!-- start -->
-<pre>
-
-<span style="color:#00ffea;">person</span> = {'name':'Json', 'age':23, 'job':'Software Developer'}
-
-# LBYL
-if 'name' in <span style="color:#00ffea;">person</span> and 'age' in <span style="color:#00ffea;">person</span> and 'job' in <span style="color:#00ffea;">person</span>:
-  print(f"I'm {<span style="color:#00ffea;">person</span>['name']}, I'm {<span style="color:#00ffea;">person</span>['age']} and I work as {<span style="color:#00ffea;">person</span>['job']}")
-else:
-  print("Missing some data!")
-
-# EAFP
-try:
-  print(f"I'm {<span style="color:#00ffea;">person</span>['name']}, I'm {<span style="color:#00ffea;">person</span>['age']} and I work as {<span style="color:#00ffea;">person</span>['job']}")
-except KeyError as e:
-  print(f"Missing {e} key")
-
-</pre>
-<!-- stop -->
-											</li>
-										</ul>
-
 
 									</header>
 								</div>
@@ -491,234 +183,42 @@ except KeyError as e:
 								<div class="container">
 									<h3>Demo</h3>
 
-									<h5>is operator</h5>
+									<h5>Coding in OOP vs coding in FP:</h5>
 									<ul>
-										<li>Returns TRUE if two variables point to the same object:
-<!-- strat -->
-<pre>
-a = 'Hello World'
-c = a
-
-print(type(a))
-# &ltclass 'str'&gt
-
-print(id(a))
-# 2807808
-
-print(id(c))
-# 2807808
-
-print(a is c)
-# True
-
-</pre>
-<!-- stop	-->
-										- <code>type()</code> returns type of the object that passed variable is pointing to.<br>
-										- <code>id()</code> returns unique id of the object that variable is pointing to.
-										</li>
-									</ul>
-
-									<h5>Immutability:</h5>
-									<ul>
-										<li>Immutability means with every change to variable, a new object is being created.</li>
-										<li>Integers are immutable:
-<!-- strat -->
-<pre>
-a = 10
-b = a
-
-print(a)
-# 10
-
-print(b)
-# 10
-
-print(id(a))
-# 270268480
-
-print(id(b))
-# 270268480
-
-
-a = 20
-
-print(a)
-# 20
-
-print(b)
-# 10
-
-print(id(a))
-# 263059680
-
-print(id(b))
-# 263059520
-
-</pre>
-<!-- stop	-->
-										- Variables are only tags for memory locations that holds an object.<br>
-										- At the beginning variable with the name of <code>a</code> tags object <code>10</code> but further in the code the same name of the variable is then shifted to object <code>20</code>.<br>
-										- When <code>b = a</code> then both variables points to the same object so <code>id(a) == id(b)</code> is <code>True</code>.<br>
-										- When <code>a = 20</code> then this line creates a new object such that <code>id(a) == id(b)</code> is <code>False</code>.<br>
-										- So, immutability means that there is no possibility to overwrite one memory location. With every try of overwriting there is a new memory location being reserved.
-										</li>
-										<li>Strings are immutable:
-<!-- strat -->
-<pre>
-srt1 = 'welcome'
-str2 = 'welcome'
-
-print(id(str1))
-# 57660415
-
-print(id(str2))
-# 57660415
-
-str2 = str2 + ' to python'
-
-print(id(str1))
-# 57660415
-
-print(id(str2))
-# 59955200
-
-</pre>
-<!-- stop	-->
-										- At the beggining where we initialize <code>str1</code> and <code>str2</code>, they point to the same object.<br>
-										- Once <code>str2</code> modified, then a new object is created in the new memory location.<br>
-										- So basically, <code>'welcome'</code> is one object in the memory but <code>'welcome to python'</code> is another object in defferent place in the memory.<br>
-										</li>
-										<li>Tuples are immutable:
-<!-- strat -->
-<pre>
-t1 = (1,2,3)
-t2 = t1
-t1 = (3,4,5)
-
-print(id(t1))
-# 19772804
-
-print(id(t2))
-# 19772808
-
-</pre>
-<!-- stop	-->
-										- When <code>t2 = t1</code> then both variables tags the same object of <code>(1,2,3)</code>.<br>
-										- When <code>t1 = (3,4,5)</code> then it creates a totally new object in different memeory slot and tahs ith with <code>t1</code> name.
-										</li>
-									</ul>
-
-									<h5>Mutability:</h5>
-									<ul>
-										<li>When mutating a mutable object, we work with the same object all the time (in the same place of memory).</li>
-										<li>List are mutable:
-<!-- strat -->
-<pre>
-list1 = [1,2,3,4]
-list2 = list1
-list1.append(10)
-
-print(list1)
-# [1,2,3,4,10]
-
-print(list2)
-# [1,2,3,4,10]
-
-print(id(list1))
-# 32763496
-
-print(id(list2))
-# 32763496
-
-</pre>
-<!-- stop	-->
-										- variables: <code>list1</code> and <code>list2</code> points to the same obejct,<br>
-										- because of mutable nature of Python list, when appending, we still append to the same object no matter which variable we use to refer to it.
-										</li>
-										<li>Let see short comparison of mutability with immutability:
-											<br>
-											<table>
-												<thead>
-													<tr>
-														<th>Mutability</th>
-														<th>Immutability</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>List, Set, Dictionary</td>
-														<td>String, Number, Tuples</td>
-													</tr>
-													<tr>
-														<td>Updating one memory location when modifing variable.</td>
-														<td>Creating new memory location when modifing variable.</td>
-													</tr>
-													<tr>
-														<td>Modifing the same object.</td>
-														<td>Creating a new object.</td>
-													</tr>
-												</tbody>
-											</table>
-										</li>
-									</ul>
-
-
-									<h5>Mutable default arguments:</h5>
-									<ul>
-										<li>Passing empty list as a defualt argument
+										<li>OOP:
 <!-- start -->
 <pre>
-def <span style="color:#00ffea;">add_employee(</span>emp, emp_list=[]<span style="color:#00ffea;">)</span>:
-  emp_list.append(emp)
+class Person:
 
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
-# ([],)
+  def __init__(self, first, last):
+    self.first = first
+    self.last = last
+    self.initials = f'{first[0]}.{last[0]}'
 
-<span style="color:#00ffea;">add_employee(</span>'Artur'<span style="color:#00ffea;">)</span>
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
-# (['Artur'],)
 
-<span style="color:#00ffea;">add_employee(</span>'John'<span style="color:#00ffea;">)</span>
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
-# (['Artur', 'John'],)
-
-</pre>
-<!-- end -->
-											- Function creates empty list by default when we don't pass a list during the function's call.<br>
-											- Function <code>add_employee</code> creates empty list by default only once. As the list is a mutable object, it's being mutated by the function on every call.
-										</li>
-										<li>Setting default list as None
-<!-- start -->
-<pre>
-def <span style="color:#00ffea;">add_employee(</span>emp, emp_list=None<span style="color:#00ffea;">)</span>:
-  if emp_list is None:
-    emp_list = []
-  emp_list.append(emp)
-  return emp_list
-
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
-# (None,)
-
-<span style="color:#00ffea;">add_employee(</span>'Artur'<span style="color:#00ffea;">)</span>
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
-# (None,)
-
-<span style="color:#00ffea;">add_employee(</span>'John'<span style="color:#00ffea;">)</span>
-print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
-# (None,)
-
+person = Person('Artur', 'Skrzete')
+person.first = 'Adam'
 </pre>
 <!-- stop -->
-											- if condition in the <code>add_employee</code> function checks if a list passed to the function, if not then <code>emp_list is None</code> is <code>True</code> and it creates a new empty object list instead
+											- Updating first name of the object goes with accessint <code>first</code> attribute of <code>person</code> object.
+										</li>
+										<li>FP:
+<!-- start -->
+<pre>
+def <span style="color:#00ffea;">create_person(</span>first, last<span style="color:#00ffea;">)</span>:
+  return {
+    'first': first,
+    'last': last,
+    'initials': f'{first[0]}.{last[0]}'
+	}
+
+person = <span style="color:#00ffea;">create_person(</span>'Artur', 'Skrzeta'<span style="color:#00ffea;">)</span>
+updated_person = <span style="color:#00ffea;">create_person(</span>'Adam'. person['last']<span style="color:#00ffea;">)</span>
+</pre>
+<!-- stop -->
+											- We define a new constsnt <code>updated_person</code> and passing new value for <code>first</code>, however leaving <code>last</code> like it was with <code>person['last']</code>.
 										</li>
 									</ul>
-
-
-
-									<!-- <h5>...</h5>
-									<ul>
-										<li>...</li>
-									</ul> -->
 
 								</div>
 							</section>
@@ -727,8 +227,7 @@ print(<span style="color:#00ffea;">add_employee</span>.__defaults__)
 							<section id="four">
 								<div class="container">
 									<h3>Setup</h3>
-									<p>Python libraries installation required:</p>
-									<code>...</code><br>
+									<p>No specific installation required.</p>
 								</div>
 							</section>
 
