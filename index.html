@@ -248,23 +248,24 @@ for func in function_list:
 </pre>
 <!-- end -->
 										</li>
+									</ul>
 
-										<h5>Passing function as the argument:</h5>
-										<ul>
-											<li>We can pass function to another function:
+									<h5>Passing function as the argument:</h5>
+									<ul>
+										<li>We can pass function to another function:
 <!-- star -->
 <pre>
 def <span style="color:#00ffea;">combine_names(</span>func<span style="color:#00ffea;">)</span>:
   return func('Artur', 'Skrzeta')
 
-def append_wtih_space(str1, str2):
+def <span style="color:#ffeb00;">append_wtih_space(</span>str1, str2<span style="color:#ffeb00;">)</span>:
   return f'{str1} {str2}'
 
-def get_upper(first, last):
+def <span style="color:#ff00f7;">get_upper(</span>first, last<span style="color:#ff00f7;">)</span>:
   return f'{first.upper()} {last.upper()}'
 
-print(<span style="color:#00ffea;">combine_names(</span>append_wtih_space<span style="color:#00ffea;">)</span>)
-print(<span style="color:#00ffea;">combine_names(</span>get_upper<span style="color:#00ffea;">)</span>)
+print(<span style="color:#00ffea;">combine_names(</span><span style="color:#ffeb00;">append_wtih_space</span><span style="color:#00ffea;">)</span>)
+print(<span style="color:#00ffea;">combine_names(</span><span style="color:#ff00f7;">get_upper</span><span style="color:#00ffea;">)</span>)
 
 -----------
 # output
@@ -272,12 +273,10 @@ print(<span style="color:#00ffea;">combine_names(</span>get_upper<span style="co
 # ARTUR SKRZETA
 </pre>
 <!-- end -->
-											</li>
-
-										</ul>
+										</li>
 									</ul>
+
 								</div>
-							</section>
 
 						<!-- Four -->
 							<section id="four">
