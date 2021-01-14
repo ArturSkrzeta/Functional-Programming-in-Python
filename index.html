@@ -183,11 +183,42 @@
 								<div class="container">
 									<h3>Demo</h3>
 
-
-									<!-- <h5>...</h5>
+									<h5>Coding in OOP vs coding in FP:</h5>
 									<ul>
-										<li>...</li>
-									</ul> -->
+										<li>OOP:
+<!-- start -->
+<pre>
+class Person:
+
+  def __init__(self, first, last):
+    self.first = first
+    self.last = last
+    self.initials = f'{first[0]}.{last[0]}'
+
+
+person = Person('Artur', 'Skrzete')
+person.first = 'Adam'
+</pre>
+<!-- stop -->
+											- Updating first name of the object goes with accessint <code>first</code> attribute of <code>person</code> object.
+										</li>
+										<li>FP:
+<!-- start -->
+<pre>
+def create_person(first, last):
+  return {
+    'first': first,
+    'last': last,
+		'initials': f'{first[0]}.{last[0]}'
+	}
+
+person = create_person('Artur', 'Skrzeta')
+updated_person = create_person('Adam'. person['last'])
+</pre>
+<!-- stop -->
+											- We define a new constsnt <code>updated_person</code> and passing new value for <code>first</code>, however leaving <code>last</code> like it was with <code>person['last']</code>.
+										</li>
+									</ul>
 
 								</div>
 							</section>
