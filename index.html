@@ -360,8 +360,30 @@ print(<span style="color:#ffeb00;">doubled_list</span>)
 										<li>Map functin doesn't change original sequence, it returns a modified copy due to function's code.</li>
 									</ul>
 
+									<h5>Filter function:</h5>
+									<ul>
+										<li>Takes each element of an iterable list and puts through a function that returns True/False. For every element that get True from a function is being copied to the new list filter returns.</li>
+<!-- start -->
+<pre>
+def <span style="color:#00ffea;">is_even(</span>x<span style="color:#00ffea;">)</span>:
+  return x % 2 == 0
 
+numbs = [1,2,3,4,5,6,7,8]
+even_numbers = list(filter(<span style="color:#00ffea;">is_even</span>,[1,2,3,4,5,6,7,8]))
 
+print(numbs)
+print(even_numbers)
+-------------------
+# output
+# [1,2,3,4,5,6,7,8]
+# [2, 4, 6, 8]
+</pre>
+<!-- stop -->
+										<li>According to above code, every even number gets True from <code>is_even</code> function.
+											Every elemetn that gets <b>True</b> is included in the filter result.
+											Every element that gets <b>False</b> is excluded from the filter result.
+										</li>
+									</ul>
 
 								</div>
 							</section>
