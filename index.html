@@ -384,6 +384,33 @@ print(even_numbers)
 										<li>Every element that gets <b>False</b> is excluded from the filter result.</li>
 									</ul>
 
+									<h5>Lambda function:</h5>
+									<ul>
+										<li>Nameless one line function with no return key-word:
+<!-- start -->
+<pre>
+add = lambda x,y: x+y
+
+print(add(2,3))
+------------------
+# output
+# 5
+</pre>
+<!-- end -->
+										</li>
+										<li>We can define it inside
+<!-- start -->
+<pre>
+doubled_numbers = list(map(lambda x: x*2, [1,2,3,4,5]))
+print(doubled_numbers)
+------------------
+# output
+# [2, 4, 6, 8, 10]
+</pre>
+<!-- end -->
+										</li>
+									</ul>
+
 								</div>
 							</section>
 
