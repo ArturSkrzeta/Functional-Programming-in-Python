@@ -316,7 +316,7 @@ print(quadruple(5))
 										<li>Example:
 <!-- start -->
 <pre>
-def divide(x,y):
+def <span style="color:#ffeb00;">divide(</span>x,y<span style="color:#ffeb00;">)</span>:
   print(x / y)
 
 def <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span>func<span style="color:#00ffea;">)</span>:
@@ -327,7 +327,7 @@ def <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span>func<span sty
     return func(*args)
   return </span><span style="color:#ff00f7;">safe_division</span>
 
-divide_with_check = <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span>divide<span style="color:#00ffea;">)</span>
+divide_with_check = <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span><span style="color:#ffeb00;">divide</span><span style="color:#00ffea;">)</span>
 divide_with_check(10, 0)
 divide_with_check(10, 2)
 -------------------------
@@ -337,9 +337,32 @@ divide_with_check(10, 2)
 #
 </pre>
 <!-- end -->
-											- function <code>safe_division</code> appends division by zero check and prevents from launching passed <code>division</code> function when second argument (divisor) is zero.
 										</li>
+										<li>Function <code>safe_division</code> appends division by zero check and prevents from launching passed <code>division</code> function when second argument (divisor) is zero.</li>
 									</ul>
+
+									<h5>Map Function:</h5>
+									<ul>
+										<li>Map function takes each element of iterable (object that we can iterate through like a list) and passes through a given function.:
+<!-- start -->
+<pre>
+def <span style="color:#00ffea;">double(</span>num<span style="color:#00ffea;">)</span>:
+  return num*2
+
+<span style="color:#ffeb00;">doubled_list</span> = [map(<span style="color:#00ffea;">double</span>,[1,2,3,4,5])]
+print(<span style="color:#ffeb00;">doubled_list</span>)
+---------------------
+# output
+# [1,4,6,8,10]
+</pre>
+<!-- stop -->
+										</li>
+										<li>Map functin doesn't change original sequence, it returns a modified copy due to function's code.</li>
+									</ul>
+
+
+
+
 								</div>
 							</section>
 
