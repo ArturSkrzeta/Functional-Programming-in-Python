@@ -435,6 +435,68 @@ print(sum)
 									</ul>
 
 
+									<h5>Working with structured data:</h5>
+									<ul>
+										<li>Here I demonstrate how to work with data and get results without changing the status as I was explaining in the intro.</li>
+										<li>Code:
+<!-- start -->
+<pre>
+employees = [
+  {
+    'name': 'Artur',
+    'salary': 11000,
+    'title': 'Data Analyst'
+  },
+  {
+    'name': 'John',
+    'salary': 15900,
+    'title': 'Software Developer'
+  }
+]
+
+def id_developer(employee):
+  return employee['title'] == 'Software Developer'
+
+def get_salary(employee):
+  return employee['salary']
+
+developers_salary = [get_salary(e) for e in employees if id_developer(e)]
+print(developers_salary)
+----------
+# output
+# 15900
+</pre>
+<!-- end -->
+											- We retrieve a needed information without amending employees list. So no changing of status requirement is fulfulled due to paradigm of functinal programming.<br>
+											- Getting <code>developers_salary</code> I apply the <b>list comprehension</b> which is Pythonic way of filtering, transformin or reducing data in the original list.<br>
+											- <code>[get_salary(e) for e in employees if is_developer(e)]</code> means get a list in which each element is the outcome of <code>get_salary</code> function that is being executed for every element of <code>employees</code> list that passes if condition of <code>is_developer</code>.
+										</li>
+									</ul>
+
+									<h5>List comprehension:</h5>
+									<ul>
+										<li>Readable way of both filter and transform elements in a list.</li>
+										<li>We can transform  each element getting transformed copy of original list.</li>
+										<li>We can get subset of original list under given condition that needs to be passed by each element of it.</li>
+										<li>It combines map and filter function successfully.</li>
+										<li>Code:
+<!-- start -->
+<pre>
+def square(x):
+  return x*x
+
+squared = [square(x) for x in [1,2,3,4,5,6,7,8,9,10] if x % 2 == 0]
+print(squared)
+---------------
+# output
+# [4, 16, 36, 64, 100]
+</pre>
+<!-- end -->
+											-	Final outcome of above code snippet is <code>squared</code> list.<br>
+											- List comprehension executes <code>suqare</code> function on each element in the original list as long as the element is even (the rest of devison by 2 eqauls 0).
+										</li>
+									</ul>
+
 								</div>
 							</section>
 
