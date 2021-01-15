@@ -308,7 +308,40 @@ print(quadruple(5))
 										</li>
 									</ul>
 
+									<h5>Wrapping function by another function:</h5>
+									<ul>
+										<li>Inner function bring some basic functionality and outer function extend this functionality with for example some logic.</li>
+										<li>What is the most important, outer function doesn't modify inner function's code. It simply appends the code.</li>
+										<li>This way, we can keep modularity of functions that are responsible only for one thing. It fulfil single responsibility rule and supports clean code approach.</li>
+										<li>Example:
+<!-- start -->
+<pre>
+def divide(x,y):
+  print(x / y)
+
+def <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span>func<span style="color:#00ffea;">)</span>:
+  def </span><span style="color:#ff00f7;">safe_division(</span>*args</span><span style="color:#ff00f7;">)</span>:
+    if args[1] == 0:
+      print('division by zero error')
+      return
+    return func(*args)
+  return </span><span style="color:#ff00f7;">safe_division</span>
+
+divide_with_check = <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span>divide<span style="color:#00ffea;">)</span>
+divide_with_check(10, 0)
+divide_with_check(10, 2)
+-------------------------
+# output
+#
+#
+#
+</pre>
+<!-- end -->
+											- function <code>safe_division</code> appends division by zero check and prevents from launching passed <code>division</code> function when second argument (divisor) is zero.
+										</li>
+									</ul>
 								</div>
+							</section>
 
 						<!-- Four -->
 							<section id="four">
