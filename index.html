@@ -398,7 +398,7 @@ print(add(2,3))
 </pre>
 <!-- end -->
 										</li>
-										<li>We can define it inside
+										<li>We can define it inside other expression (here map function):
 <!-- start -->
 <pre>
 doubled_numbers = list(map(lambda x: x*2, [1,2,3,4,5]))
@@ -411,6 +411,29 @@ print(doubled_numbers)
 <!-- end -->
 										</li>
 									</ul>
+
+									<h5>Reduce function:</h5>
+									<ul>
+										<li>Reduces an iterable object (a list) to a single value:
+<!-- start -->
+<pre>
+get <span style="color:#00ffea;">get_sum(</span>acc, val<span style="color:#00ffea;">)</span>:
+  return acc + val
+
+sum = reduce(<span style="color:#00ffea;">get_sum</span>, [1,2,3,4,5])
+
+print(sum)
+------------
+# output
+# 15
+</pre>
+<!-- end -->
+											- <code>reduce</code> function reduces entire iterable due to passed function of <code>get_sum</code>.<br>
+											- First argument <code>acc</code> of <code>get_sum</code> is a value of accumulated values that grows as we go trough the iterable.<br>
+											- Second argument <code>val</code> of <code>get_sum</code> is a value that we want to add to accumulated values that we get so far.
+										</li>
+									</ul>
+
 
 								</div>
 							</section>
