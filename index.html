@@ -532,8 +532,8 @@ print(squared)
 											- is an object with the state,<br>
 											- it remembers where it is during the iteration,<br>
 											- it knows how to get its next value with special method <b>__next__()</b>,<br>
-											- iterator can only go forward by calling <b>__next__</b> on iterable,<br>
-											- when there is no next value the raises <u>stop iteration exception</u>,<br>
+											- iterator can only go forward by calling <b>__next__</b>,<br>
+											- if there is no next value then raises <u>stop iteration exception</u>,<br>
 											- for example an object of list doesn't have <b>__next__</b> method so it isn't the iterator:
 <!-- start -->
 <pre>
@@ -561,9 +561,16 @@ next(i_lst)
 
 next(i_lst)
 # 3
+
+next(i_lst)
+# StopIteration
 </pre>
 <!-- end -->
-											- When exceeding number of values iterator gets exhausted.<br>
+											- Calling <code>iter</code> on the iterable list returns the iterator.<br>
+											- Calling <code>next</code> on the iterator object gives following values of iterable.<br>
+											- Iterator remebers where it stops between every single value yielding.<br>
+											- Between values yielding, iterator gives back control to the user's code.<br>
+											- Iterator gets values one by one until exceeding number of all values, then hits <b>StopIteration</b> exception.<br>
 										</li>
 									</ul>
 
@@ -592,6 +599,10 @@ next(i_lst)
 												<td>You are getting values on the fly one by one.</td>
 											</tr>
 											<tr>
+												<td>Outside code gets control back when function's execution completed.</td>
+												<td>Gives control back to the caller on every yield.</td>
+											</tr>
+											<tr>
 												<td>When reaching <b>return</b> statement, the local variables get removed</td>
 												<td>When reaching <b>yield</b> statement, the execution state is frozen and local variables are preserved.</td>
 											</tr>
@@ -607,10 +618,10 @@ next(i_lst)
 											- Here is the example of a regular function:
 <!-- start -->
 <pre>
-def compute():
+def generate_integers(n):
   new_list = []
-	for i in range(100):
-    new_list.appned(i*2)
+  for i in range(1,n+1):
+    new_list.appned(i)
   return new_list
 </pre>
 <!-- end -->
@@ -622,18 +633,52 @@ def compute():
 										</li>
 										<li>Generator:
 											<br>
-											- Any function containing a yield keyword is a generator function what can be recognized by Python interpreter.
-											-
+											- Any function containing a yield keyword is a generator function what can be recognized by Python interpreter.<br>
+
+											- Generator implementation:
 <!-- start -->
 <pre>
-def compute():
-	for i in range(100):
-    yield i*2
+def generate_integers(n):
+  for i in range(1, n + 1):
+    yield i
+
+gen = generate_integers(3)
+
+next(gen)
+# 1
+
+next(gen)
+# 2
+
+next(gen)
+# 3
+
+next(gen)
+# StopIteration
 </pre>
 <!-- end -->
-											- Generators provide one value at a time. It doesn't have a storage for gathering results of each for loop iteration.<br>
+											- Generators don't hold the result in the memory, they provide one value at a time.<br>
+											- It doesn't have a storage for gathering results of each for loop iteration.<br>
+											- With every <code>next</code> we get a value yielded by <code>generate_integers</code>.<br>
+											- Between each call of <code>next</code>, generator gives control back to the outside code.
 										</li>
-
+										<li>With generator we can set the workflow sequence:
+											<br>
+											1. User's code runs.<br>
+											2. Entering generator looking for a value.<br>
+											3. Generator runs its code.<br>
+											4. Generator yields back to the user's code.<br>
+											5. User's code takes it and processes it at once.<br>
+											6. Going back to the generator asking for another valye to yield.<br>
+										</li>
+										<li>Making a generator from the list comprehension:
+											<br>
+											- with this you get all results in a list at once:<br>
+											<code>my_nums = [x*x for x in[1,2,3,4]]</code><br>
+											- with this you get generator:<br>
+											<code>my_nums = (x*x for x in[1,2,3,4])</code><br>
+											- notice, the difference is only in rhe outer brackets.
+										</li>
 									</ul>
 
 								</div>
