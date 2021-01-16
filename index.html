@@ -521,6 +521,12 @@ print(squared)
 
 									<h5 id="iterators">Iterators and iterables:</h5>
 									<ul>
+										<li>Iterable:
+											<br>
+											- an object that can be looped through,<br>
+											- there is a special method that makes it iterable and this is <b>__iter__()</b>,<br>
+											- a loop calls <b>__iter__</b> on the iterable object returning iterator.
+										</li>
 										<li>Iterator:
 											<br>
 											- is an object with the state,<br>
@@ -540,12 +546,24 @@ lst.__next__()
 # AttributeError: 'list' object has no attribute '__next__'
 </pre>
 <!-- end -->
-										</li>
-										<li>Iterable:
-											<br>
-											- an object that can be looped through,<br>
-											- there is a special method that makes it iterable and this is <b>__iter__()</b>,<br>
-											- a loop calls <b>__iter__</b> on the iterable object returning iterator.
+											- getting iterator from the iterable object:
+<!-- start -->
+<pre>
+lst = [1,2,3]
+
+i_lst = iter(lst)
+
+next(i_lst)
+# 1
+
+next(i_lst)
+# 2
+
+next(i_lst)
+# 3
+</pre>
+<!-- end -->
+											- When exceeding number of values iterator gets exhausted.<br>
 										</li>
 									</ul>
 
