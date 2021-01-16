@@ -51,7 +51,23 @@
 										<h3>Intro</h3>
 
 
-										<p style="text-align: justify;">In this, let's call it, post I put all my notes on functional programming in Python. However let's start with more general concepts in programming. Programming languages follow one of 2 paradigms:</p>
+										<p style="text-align: justify;">In this, let's call it, post I put all my notes on functional programming in Python. However let's start with more general concepts in programming.</p>
+
+										<h5>You can navigate to following concepts here:</h5>
+										<ul>
+											<a href="#oop_vs_fp"><li>Object-oriented programming vs functional programming</li></a>
+											<a href="#list_of_functions"><li>List of functions</li></a>
+											<a href="#functions_arguments"><li>Passing function as the argument</li></a>
+											<a href="#returning_function"><li>Returning a function by anoter function</li></a>
+											<a href="#wrapping_function"><li>Wrapping function by another function</li></a>
+											<a href="#map"><li>Map function</li></a>
+											<a href="#filter"><li>Filter function</li></a>
+											<a href="#lambda"><li>Lambda function</li></a>
+											<a href="#reduce"><li>Reduce function</li></a>
+											<a href="#list_comprehension"><li>List comprehension</li></a>
+										</ul>
+
+										<p>Programming languages follow one of 2 paradigms:</p>
 
 										<table>
 											<thead>
@@ -162,9 +178,9 @@
 													Functional programming treats values as if they were concrete and unchangeable.
 													For example the list <code>my_list</code> is defined once and whenever you want to update its values then you would need to create a new list and fill it up with modified original values.
 											</li>
-											<li>This one is more like flexibility than constraint and it's called higher order functions.
+											<li>This one is more like flexibility than constraint and it's called <b>higher order functions</b>.
 													This kind of function can be freely used in Python where a function can accept other function as a parameter as well as a funciton can return anoter funcion as the output.
-											</li>											
+											</li>
 										</ul>
 
 									</header>
@@ -187,7 +203,7 @@
 								<div class="container">
 									<h3>Demo</h3>
 
-									<h5>Coding in OOP vs coding in FP:</h5>
+									<h5 id="oop_vs_fp">Coding in OOP vs coding in FP:</h5>
 									<ul>
 										<li>OOP:
 <!-- start -->
@@ -224,7 +240,7 @@ updated_person = <span style="color:#00ffea;">create_person(</span>'Adam'. perso
 										</li>
 									</ul>
 
-									<h5>List of functions:</h5>
+									<h5 id="list_of_functions">List of functions:</h5>
 									<ul>
 										<li>Wec can store functions in the list keeping their name without executing them:
 <!-- start -->
@@ -254,7 +270,7 @@ for func in function_list:
 										</li>
 									</ul>
 
-									<h5>Passing function as the argument:</h5>
+									<h5 id="functions_arguments">Passing function as the argument:</h5>
 									<ul>
 										<li>We can pass function to another function:
 <!-- star -->
@@ -280,7 +296,7 @@ print(<span style="color:#00ffea;">combine_names(</span><span style="color:#ff00
 										</li>
 									</ul>
 
-									<h5>Returning a function by anoter function:</h5>
+									<h5 id="returning_function">Returning a function by anoter function:</h5>
 									<ul>
 										<li>Every function can return another function:
 <!-- start -->
@@ -312,7 +328,7 @@ print(quadruple(5))
 										</li>
 									</ul>
 
-									<h5>Wrapping function by another function:</h5>
+									<h5 id="wrapping_function">Wrapping function by another function:</h5>
 									<ul>
 										<li>Inner function bring some basic functionality and outer function extend this functionality with for example some logic.</li>
 										<li>What is the most important, outer function doesn't modify inner function's code. It simply appends the code.</li>
@@ -345,7 +361,7 @@ divide_with_check(10, 2)
 										<li>Function <code>safe_division</code> appends division by zero check and prevents from launching passed <code>division</code> function when second argument (divisor) is zero.</li>
 									</ul>
 
-									<h5>Map Function:</h5>
+									<h5 id="map">Map Function:</h5>
 									<ul>
 										<li>Map function takes each element of iterable (object that we can iterate through like a list) and passes through a given function.:
 <!-- start -->
@@ -364,7 +380,7 @@ print(<span style="color:#ffeb00;">doubled_list</span>)
 										<li>Map functin doesn't change original sequence, it returns a modified copy due to function's code.</li>
 									</ul>
 
-									<h5>Filter function:</h5>
+									<h5 id="filter">Filter function:</h5>
 									<ul>
 										<li>Takes each element of an iterable list and puts through a function that returns True/False. For every element that get True from a function is being copied to the new list filter returns.</li>
 <!-- start -->
@@ -388,7 +404,7 @@ print(even_numbers)
 										<li>Every element that gets <b>False</b> is excluded from the filter result.</li>
 									</ul>
 
-									<h5>Lambda function:</h5>
+									<h5 id="lambda">Lambda function:</h5>
 									<ul>
 										<li>Nameless one line function with no return key-word:
 <!-- start -->
@@ -416,7 +432,7 @@ print(doubled_numbers)
 										</li>
 									</ul>
 
-									<h5>Reduce function:</h5>
+									<h5 id="reduce">Reduce function:</h5>
 									<ul>
 										<li>Reduces an iterable object (a list) to a single value:
 <!-- start -->
@@ -477,7 +493,7 @@ print(developers_salary)
 										</li>
 									</ul>
 
-									<h5>List comprehension:</h5>
+									<h5 id="list_comprehension">List comprehension:</h5>
 									<ul>
 										<li>Readable way of both filter and transform elements in a list.</li>
 										<li>We can transform  each element getting transformed copy of original list.</li>
