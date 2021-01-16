@@ -65,6 +65,8 @@
 											<a href="#lambda"><li>Lambda function</li></a>
 											<a href="#reduce"><li>Reduce function</li></a>
 											<a href="#list_comprehension"><li>List comprehension</li></a>
+											<a href="#iterators"><li>Iterators</li></a>
+											<a href="#generators"><li>Generators</li></a>
 										</ul>
 
 										<p>Programming languages follow one of 2 paradigms:</p>
@@ -515,6 +517,105 @@ print(squared)
 											-	Final outcome of above code snippet is <code>squared</code> list.<br>
 											- List comprehension executes <code>suqare</code> function on each element in the original list as long as the element is even (the rest of devison by 2 eqauls 0).
 										</li>
+									</ul>
+
+									<h5 id="iterators">Iterators and iterables:</h5>
+									<ul>
+										<li>Iterator:
+											<br>
+											- is an object with the state,<br>
+											- it remembers where it is during the iteration,<br>
+											- it knows how to get its next value with special method <b>__next__()</b>,<br>
+											- iterator can only go forward by calling <b>__next__</b> on iterable,<br>
+											- when there is no next value the raises <u>stop iteration exception</u>,<br>
+											- for example an object of list doesn't have <b>__next__</b> method so it isn't the iterator:
+<!-- start -->
+<pre>
+lst = [1,2,3]
+
+next(lst)
+# TypeError: 'list' object is not an iterator
+
+lst.__next__()
+# AttributeError: 'list' object has no attribute '__next__'
+</pre>
+<!-- end -->
+										</li>
+										<li>Iterable:
+											<br>
+											- an object that can be looped through,<br>
+											- there is a special method that makes it iterable and this is <b>__iter__()</b>,
+											- a loop calls <b>__iter__</b> on the iterable object returning iterator.
+										</li>
+									</ul>
+
+									<h5 id="generators">Generators:</h5>
+									<ul>
+										<li>At first lets understand the difference between generators and regular functions:</li>
+									</ul>
+									<table>
+										<thead>
+											<tr>
+												<th>Regular functions</th>
+												<th>Generators</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Computes all values and returns them at once.</td>
+												<td>Returns an iterator that returns a stream of values.</td>
+											</tr>
+											<tr>
+												<td>Keeps storage for a resulting values.</td>
+												<td>No additional storage as it provides values one by one when we ask for it.</td>
+											</tr>
+											<tr>
+												<td>You need to wait for the result till function execution done completely.</td>
+												<td>You are getting values on the fly one by one.</td>
+											</tr>
+											<tr>
+												<td>When reaching <b>return</b> statement, the local variables get removed</td>
+												<td>When reaching <b>yield</b> statement, the execution state is frozen and local variables are preserved.</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<ul>
+										<li>Regular function:
+											<br>
+											- When function is being called, it gets a private namespace along with local variables.
+											Once the function reaches a return, the local variables are destroyed and the value is returned to the caller.<br>
+											- Another call to the same function recreates a new private namespace with fresh set of local variables.<br>
+											- Here is the example of a regular function:
+<!-- start -->
+<pre>
+def compute():
+  new_list = []
+	for i in range(100):
+    new_list.appned(i*2)
+  return new_list
+</pre>
+<!-- end -->
+											-	Above function gives entire result at once, with the same time of execution and with the same memory space taken.<br>
+											- Doesn't matter if I want to get first value or 5 first values, if execution time is 5 seconds, then I need to wait 5 seconds for the whole computation to be done.<br>
+											- And even though I might care about first value of 5 first values, I still get entire list as the result.<br>
+											- The bigger the loop, the more time I need to spend waiting to even start processing the very first element of the output.<br>
+											- I'm blocked for the time the function is being executed completely.<br>
+										</li>
+										<li>Generator:
+											<br>
+											- Any function containing a yield keyword is a generator function what can be recognized by Python interpreter.
+											-
+<!-- start -->
+<pre>
+def compute():
+	for i in range(100):
+    yield i*2
+</pre>
+<!-- end -->
+											- Generators provide one value at a time. It doesn't have a storage for gathering results of each for loop iteration.<br>
+										</li>
+
 									</ul>
 
 								</div>
