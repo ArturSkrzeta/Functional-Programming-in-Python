@@ -351,6 +351,7 @@ def <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span>func<span sty
   return </span><span style="color:#ff00f7;">safe_division</span>
 
 divide_with_check = <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span><span style="color:#ffeb00;">divide</span><span style="color:#00ffea;">)</span>
+
 divide_with_check(10, 0)
 # 'division by zero error'
 
@@ -707,20 +708,24 @@ def <span style="color:#00ffea;">count_sum(</span>*args<span style="color:#00ffe
 												As the same for *args, the number of passed keyword arguments can vary.
 <!-- start -->
 <pre>
-def build_sentence(**kwargs):
-  sentence = ""
-  for word in kwargs.values():
-    ' '.join(sentence)
-  return sentence
+def <span style="color:#00ffea;">introduce_person(</span>**kwargs<span style="color:#00ffea;">)</span>:
+  for key, value in kwargs.items():
+      print(f'{key}: {value}')
 
-build_sentence(a="Real", b="Python", c="Is", d="Great", e="!")
+<span style="color:#00ffea;">introduce_person(</span>firstname="Artur", lastname="Skrzeta", age=27<span style="color:#00ffea;">)</span>
+# firstname: Artur
+# lastname: Skrzeta
+# age: 27
+
+<span style="color:#00ffea;">introduce_person(</span>firstname="John", email="john@company.com"<span style="color:#00ffea;">)</span>
+# firstname: John
+# email: john@company.com
 </pre>
 <!-- end -->
-											- Function <code>build_sentence</code> accepts keyword arguments in form of a regular dictionary.<br>
+											- Function <code>introduce_person</code> accepts keyword arguments in form of a regular dictionary.<br>
 											- We can replace <b>kwargs</b> with any name as long as it's preceded by unpacking operator of <b>*</b>.<br>
-											- To iterate dictionary's values, we must to call <code>.values()</code> on it, otherwise we will be iterating thorugh its keys.
+											- To iterate dictionary's keys and values, we must to call <code>.items()</code> on it.
 										</li>
-
 									</ul>
 
 
