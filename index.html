@@ -67,6 +67,7 @@
 											<a href="#list_comprehension"><li>List comprehension</li></a>
 											<a href="#iterators"><li>Iterators</li></a>
 											<a href="#generators"><li>Generators</li></a>
+											<a href="#args_and_kwargs"><li>*args and **kwargs</li></a>
 										</ul>
 
 										<p>Programming languages follow one of 2 paradigms:</p>
@@ -351,12 +352,10 @@ def <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span>func<span sty
 
 divide_with_check = <span style="color:#00ffea;">check_if_divisor_isnt_zero(</span><span style="color:#ffeb00;">divide</span><span style="color:#00ffea;">)</span>
 divide_with_check(10, 0)
+# 'division by zero error'
+
 divide_with_check(10, 2)
--------------------------
-# output
-#
-#
-#
+# 5
 </pre>
 <!-- end -->
 										</li>
@@ -680,6 +679,52 @@ next(gen)
 											- notice, the difference is only in rhe outer brackets.
 										</li>
 									</ul>
+
+									<h5 id="args_and_kwargs">*args and **kwargs</h5>
+									<ul>
+										<li>Putting <b>*arg</b> in the function definition allows to provide as many positional arguments as you need at any given moment.
+												This is very convenient way of passing varying number of arguments instead of passing them within one list whose size needs to be known up front.
+<!-- start -->
+<pre>
+def <span style="color:#00ffea;">count_sum(</span>*args<span style="color:#00ffea;">)</span>
+  result = 0
+  for i in args:
+    result += i
+  return result
+
+<span style="color:#00ffea;">count_sum(</span>1,2<span style="color:#00ffea;">)</span>
+# 3
+
+<span style="color:#00ffea;">count_sum(</span>1,2,3,4,5,6,7<span style="color:#00ffea;">)</span>
+# 28
+</pre>
+<!-- end -->
+											- Function <code>count_sum</code> takes all the passed parameters (regardless of its count) and packs them all into a single iterable object named <code>args</code>.<br>
+											- However, <code>args</code> is not an obligatory name, it can be replaced with different names as <code>*numbers</code> or anything with unpacking operator: <b>*</b> preceding.<br>
+											- The iterable that function loops through is a tuple which is an immutable object and thus its values cannot be changed after assignment.<br>
+										</li>
+										<li>Putting <b>**kwargs</b> in the function definition we pass keywords (named) arguments.
+												As the same for *args, the number of passed keyword arguments can vary.
+<!-- start -->
+<pre>
+def build_sentence(**kwargs):
+  sentence = ""
+  for word in kwargs.values():
+    ' '.join(sentence)
+  return sentence
+
+build_sentence(a="Real", b="Python", c="Is", d="Great", e="!")
+</pre>
+<!-- end -->
+											- Function <code>build_sentence</code> accepts keyword arguments in form of a regular dictionary.<br>
+											- We can replace <b>kwargs</b> with any name as long as it's preceded by unpacking operator of <b>*</b>.<br>
+											- To iterate dictionary's values, we must to call <code>.values()</code> on it, otherwise we will be iterating thorugh its keys.
+										</li>
+
+									</ul>
+
+
+
 
 								</div>
 							</section>
